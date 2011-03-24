@@ -26,12 +26,10 @@
         };
 
         Brush.prototype = new SyntaxHighlighter.Highlighter();
-        Brush.aliases   = ['java'];
+        Brush.aliases   = ['pigs'];
 
         SyntaxHighlighter.brushes.Java = Brush;
 
         // CommonJS
         typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
 })();
-SyntaxHighlighter.brushes.Custom.prototype    = new SyntaxHighlighter.Highlighter();
-SyntaxHighlighter.brushes.Custom.aliases  = ['pig','hadoop-pig'];
