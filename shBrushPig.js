@@ -35,4 +35,3 @@
 })();
 SyntaxHighlighter.brushes.Custom.prototype    = new SyntaxHighlighter.Highlighter();
 SyntaxHighlighter.brushes.Custom.aliases  = ['pig','hadoop-pig'];
-SyntaxHighlighter.brushes.Custom.aliases  = ['pig','hadoop-pig'];
