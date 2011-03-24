@@ -1,0 +1,57 @@
+
+<html>
+<head>
+<!-- Include required JS files -->
+<script type="text/javascript" src="http://alexgorbatchev.com/pub/sh/2.1.382/scripts/shCore.js"></script>
+ 
+<!--
+    At least one brush, here we choose JS. You need to include a brush for every 
+    language you want to highlight
+-->
+<script type="text/javascript" src="http://alexgorbatchev.com/pub/sh/2.1.382/scripts/shBrushJava.js"></script>
+ <script type="text/javascript" src="./shBrushPig.js"></script>
+ 
+<!-- Include *at least* the core style and default theme -->
+<link href="http://alexgorbatchev.com/pub/sh/2.1.382/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://alexgorbatchev.com/pub/sh/2.1.382/styles/shThemeDefault.css" rel="stylesheet" type="text/css" 
+
+
+
+ 
+</head>
+<body>
+Using the nice instructions at <a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/brushes/custom.html">the SyntaxHighlighter homepage</a> I've created a brush for hadoop-pig.
+
+Example:
+<pre class="brush: pig">
+/* myscript.pig
+My script includes three simple Pig Latin Statements.
+*/
+customerData = LOAD 'CustomerData-020211' USING PigStorage(',') AS (customerId:chararray, purchaseDate:long, itemId:long);
+customersGroupByItem = GROUP customerData BY itemId;
+numberOfCustomersWhoBoughtItem = FOREACH customersGroupByItem {
+  --count them all
+  count = COUNT(customerData.customerId);
+  countAll = COUNT(*)
+  GENERATE group.itemId, count;
+  count2 = count +2;
+};
+
+</pre>
+
+<pre class="brush: java">
+public class ConvertStringToInt {
+  public static void main(String[] args) {
+    String aString = "78";
+    int aInt = Integer.parseInt(aString);
+    
+    System.out.println(aInt);
+  }
+}
+
+</pre>
+<script type="text/javascript">
+     SyntaxHighlighter.all()
+</script
+</body>
+</html>

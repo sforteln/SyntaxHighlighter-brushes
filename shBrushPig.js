@@ -1,35 +1,24 @@
 SyntaxHighlighter.brushes.Pig=function()
-{
-        // CommonJS
-        typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+{					
+	var grunt = 'exec run cat cd copyFromLocal copyToLocal cp ls mkdir mv pwd rm rmf help kill quit set';
+	var datatypes = 'int long float double chararray bytearray tuple bag map';
+	var diagnosticOperators = 'describe dump explain illustrate';
+	var evaFunctions = 'AVG CONCAT COUNT DIFF IsEmpty MAX MIN SIZE SUM TOKENIZE';
+    var relationalOperators =	'cogroup cross distinct filter foreach group join inner outer full left '+
+								'limit load order sample split store stream union';
 
-        function Brush()
-        {
-                var keywords =  'load using as foreach generate';
+	this.regexList = [
+		{ regex: /--(.*)$/gm,			css: 'comments' },	// one line comments
+		{ regex: SyntaxHighlighter.regexLib.multiLineCComments,				css: 'comments' },	// multiline comments
+		{ regex: SyntaxHighlighter.regexLib.multiLineDoubleQuotedString,	css: 'string' },			// double quoted strings
+		{ regex: SyntaxHighlighter.regexLib.multiLineSingleQuotedString,	css: 'string' },			// single quoted strings
+		{ regex: new RegExp(this.getKeywords(datatypes), 'gmi'),				css: 'color1' },			// datatypes
+		{ regex: new RegExp(this.getKeywords(relationalOperators), 'gmi'),			css: 'keyword' },			
+		{ regex: new RegExp(this.getKeywords(diagnosticOperators), 'gmi'),			css: 'keyword' },			
+		{ regex: new RegExp(this.getKeywords(evaFunctions), 'gm'),			css: 'color2' },			
+		{ regex: new RegExp(this.getKeywords(grunt), 'gmi'),			css: 'keyword' }			// grunt
+		];
 
-                this.regexList = [
-                        { regex: SyntaxHighlighter.regexLib.singleLineCComments,        css: 'comments' },              // one line comments
-                        { regex: /\/\*([^\*][\s\S]*)?\*\//gm,                                           css: 'comments' },              // multiline comments
-                        { regex: /\/\*(?!\*\/)\*[\s\S]*?\*\//gm,                                        css: 'preprocessor' },  // documentation comments
-                        { regex: SyntaxHighlighter.regexLib.doubleQuotedString,         css: 'string' },                // strings
-                        { regex: SyntaxHighlighter.regexLib.singleQuotedString,         css: 'string' },                // strings
-                        { regex: /\b([\d]+(\.[\d]+)?|0x[a-f0-9]+)\b/gi,                         css: 'value' },                 // numbers
-                        { regex: /(?!\@interface\b)\@[\$\w]+\b/g,                                       css: 'color1' },                // annotation @anno
-                        { regex: /\@interface\b/g,                                                                      css: 'color2' },                // @interface keyword
-                        { regex: new RegExp(this.getKeywords(keywords), 'gm'),          css: 'keyword' }                // java keyword
-                        ];
-
-                this.forHtmlScript({
-                        left    : /(&lt;|<)%[@!=]?/g, 
-                        right   : /%(&gt;|>)/g 
-                });
-        };
-
-        Brush.prototype = new SyntaxHighlighter.Highlighter();
-        Brush.aliases   = ['pig'];
-
-        SyntaxHighlighter.brushes.Pig = Brush;
-
-        // CommonJS
-        typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
-};SyntaxHighlighter.brushes.Pig.prototype=new SyntaxHighlighter.Highlighter();SyntaxHighlighter.brushes.Pig.aliases=['pig'];
+};
+SyntaxHighlighter.brushes.Pig.prototype = new SyntaxHighlighter.Highlighter();
+SyntaxHighlighter.brushes.Pig.aliases = ['pig'];
