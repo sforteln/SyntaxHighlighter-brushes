@@ -1,4 +1,4 @@
-;(function()
+SyntaxHighlighter.brushes.Pig=function()
 {
         // CommonJS
         typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
@@ -26,10 +26,10 @@
         };
 
         Brush.prototype = new SyntaxHighlighter.Highlighter();
-        Brush.aliases   = ['pigs'];
+        Brush.aliases   = ['pig'];
 
-        SyntaxHighlighter.brushes.Java = Brush;
+        SyntaxHighlighter.brushes.Pig = Brush;
 
         // CommonJS
         typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
-})();
+};SyntaxHighlighter.brushes.Pig.prototype=new SyntaxHighlighter.Highlighter();SyntaxHighlighter.brushes.Pig.aliases=['pig'];
